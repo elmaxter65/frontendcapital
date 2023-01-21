@@ -17,7 +17,7 @@ function ProductList() {
     }
 
     useEffect(() => {
-        axios.get('https://e0a28c60-4b05-422e-8c15-ec8d6ca9836c.mock.pstmn.io/products')
+        axios.get('https://e141eeda-03c6-452e-b1b4-49e711613c2f.mock.pstmn.io/products')
             .then((response) => {
                 console.log("response.data")
                 console.log(response.data)
@@ -49,7 +49,7 @@ function ProductList() {
 
     const handleDelete = (product: { id: string; name: string; price: string; picture: string; description: string; }, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.stopPropagation();
-        axios.delete(`https://e0a28c60-4b05-422e-8c15-ec8d6ca9836c.mock.pstmn.io/products/${product.id}`)
+        axios.delete(`https://e141eeda-03c6-452e-b1b4-49e711613c2f.mock.pstmn.io/products/${product.id}`)
             .then((response) => {
                 console.log(response);
                 // Eliminar el producto de la lista de products

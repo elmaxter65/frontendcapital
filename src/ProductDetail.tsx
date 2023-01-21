@@ -17,7 +17,7 @@ interface ProductDetailProps {
 function ProductDetail({product, onClose}: ProductDetailProps) {
     const [name, setName] = useState(product.name);
     const [price, setPrice] = useState(product.price);
-    const [picture, setPicture] = useState(product.picture);
+    const [picture] = useState(product.picture);
     const [description, setDescription] = useState(product.description);
 
     const handleEdit = async () => {
@@ -29,7 +29,7 @@ function ProductDetail({product, onClose}: ProductDetailProps) {
                 picture,
                 description
             }
-            const response = await axios.put(`http://localhost:3000/products/${product.id}`, updatedProduct);
+            const response = await axios.put(`https://e141eeda-03c6-452e-b1b4-49e711613c2f.mock.pstmn.io/products/${product.id}`, updatedProduct);
             console.log(response);
             alert("Product has been edited successfully!");
         } catch (error) {
