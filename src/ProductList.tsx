@@ -60,7 +60,7 @@ function ProductList() {
     };
     return (
         <div>
-            <div className="mb-3"></div>
+            <div className="mb-3"/>
             <div className="input-group mb-3 px-5">
                 <input
                     type="text"
