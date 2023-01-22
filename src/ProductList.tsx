@@ -19,8 +19,6 @@ function ProductList() {
     useEffect(() => {
         axios.get('https://d3be68ff-b793-49f4-bce3-e8c21c1979a4.mock.pstmn.io/products')
             .then((response) => {
-                console.log("response.data")
-                console.log(response.data)
                 setProducts(response.data.map((p: { _id: string, name: any; price: any; image: any; description: any; }) => ({
                     _id: p._id,
                     name: p.name,

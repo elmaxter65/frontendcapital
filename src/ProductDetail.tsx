@@ -21,7 +21,6 @@ function ProductDetail({product, onClose}: ProductDetailProps) {
     const [description, setDescription] = useState(product.description);
 
     const handleEdit = async () => {
-        console.log(product)
         try {
             const updatedProduct = {
                 _id: product._id,
@@ -30,8 +29,7 @@ function ProductDetail({product, onClose}: ProductDetailProps) {
                 picture,
                 description
             }
-            const response = await axios.put(`https://d3be68ff-b793-49f4-bce3-e8c21c1979a4.mock.pstmn.io/products/${product._id}`, updatedProduct);
-            console.log(response);
+            await axios.put(`https://d3be68ff-b793-49f4-bce3-e8c21c1979a4.mock.pstmn.io/products/${product._id}`, updatedProduct);
             alert("Product has been edited successfully!");
         } catch (error) {
             console.log(error);
