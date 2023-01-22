@@ -60,7 +60,8 @@ function ProductList() {
     };
     return (
         <div>
-            <div className="input-group mb-3">
+            <div className="mb-3"></div>
+            <div className="input-group mb-3 px-5">
                 <input
                     type="text"
                     value={searchTerm}
@@ -69,7 +70,8 @@ function ProductList() {
                     className="form-control"
                 />
                 <div className="input-group-append">
-                    <button className="btn btn-outline-secondary" type="submit">Search</button>
+                    <button className="btn btn-success
+                   " type="submit">Search</button>
                 </div>
             </div>
             {!showProductDetail && (
