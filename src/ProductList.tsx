@@ -4,32 +4,32 @@ import ProductDetail from "./ProductDetail";
 import axios from 'axios';
 
 function ProductList() {
-    const [products, setProducts] = useState<{ id: string, name: string, price: string, picture: string, description: string }[]>([]);
-    const [filteredProducts, setFilteredProducts] = useState<{ id: string, name: string, price: string, picture: string, description: string }[]>([]);
+    const [products, setProducts] = useState<{ _id: string, name: string, price: string, picture: string, description: string }[]>([]);
+    const [filteredProducts, setFilteredProducts] = useState<{ _id: string, name: string, price: string, picture: string, description: string }[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [hoveredProduct, setHoveredProduct] = useState<{ id: string, name: string; price: string; picture: string; description: string; } | null>(null);
-    const [selectedProduct, setSelectedProduct] = useState<{ id: string, name: string; price: string; picture: string; description: string; } | null>(null);
+    const [hoveredProduct, setHoveredProduct] = useState<{ _id: string, name: string; price: string; picture: string; description: string; } | null>(null);
+    const [selectedProduct, setSelectedProduct] = useState<{ _id: string, name: string; price: string; picture: string; description: string; } | null>(null);
     const [showProductDetail, setShowProductDetail] = useState(false);
 
-    const handleProductClick = (product: { id: string; name: string; price: string; picture: string; description: string; }) => {
+    const handleProductClick = (product: { _id: string; name: string; price: string; picture: string; description: string; }) => {
         setSelectedProduct(product);
         setShowProductDetail(true);
     }
 
     useEffect(() => {
-        axios.get('https://e141eeda-03c6-452e-b1b4-49e711613c2f.mock.pstmn.io/products')
+        axios.get('https://d3be68ff-b793-49f4-bce3-e8c21c1979a4.mock.pstmn.io/products')
             .then((response) => {
                 console.log("response.data")
                 console.log(response.data)
-                setProducts(response.data.map((p: { id: string, name: any; price: any; image: any; description: any; }) => ({
-                    id: p.id,
+                setProducts(response.data.map((p: { _id: string, name: any; price: any; image: any; description: any; }) => ({
+                    _id: p._id,
                     name: p.name,
                     price: p.price,
                     picture: p.image,
                     description: p.description
                 })));
-                setFilteredProducts(response.data.map((p: { id: string, name: any; price: any; image: any; description: any; }) => ({
-                    id: p.id,
+                setFilteredProducts(response.data.map((p: { _id: string, name: any; price: any; image: any; description: any; }) => ({
+                    _id: p._id,
                     name: p.name,
                     price: p.price,
                     picture: p.image,
@@ -47,13 +47,13 @@ function ProductList() {
         );
     }, [searchTerm, products]);
 
-    const handleDelete = (product: { id: string; name: string; price: string; picture: string; description: string; }, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const handleDelete = (product: { _id: string; name: string; price: string; picture: string; description: string; }, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.stopPropagation();
-        axios.delete(`https://e141eeda-03c6-452e-b1b4-49e711613c2f.mock.pstmn.io/products/${product.id}`)
+        axios.delete(`https://d3be68ff-b793-49f4-bce3-e8c21c1979a4.mock.pstmn.io/products/${product._id}`)
             .then((response) => {
                 console.log(response);
                 // Eliminar el producto de la lista de products
-                const newProducts = products.filter((p) => p.id !== product.id);
+                const newProducts = products.filter((p) => p._id !== product._id);
                 setProducts(newProducts);
             })
             .catch((err) => {

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import axios from 'axios';
 
 interface Product {
-    id: string;
+    _id: string;
     name: string;
     price: string;
     picture: string;
@@ -21,15 +21,16 @@ function ProductDetail({product, onClose}: ProductDetailProps) {
     const [description, setDescription] = useState(product.description);
 
     const handleEdit = async () => {
+        console.log(product)
         try {
             const updatedProduct = {
-                id: product.id,
+                _id: product._id,
                 name,
                 price,
                 picture,
                 description
             }
-            const response = await axios.put(`https://e141eeda-03c6-452e-b1b4-49e711613c2f.mock.pstmn.io/products/${product.id}`, updatedProduct);
+            const response = await axios.put(`https://d3be68ff-b793-49f4-bce3-e8c21c1979a4.mock.pstmn.io/products/${product._id}`, updatedProduct);
             console.log(response);
             alert("Product has been edited successfully!");
         } catch (error) {
